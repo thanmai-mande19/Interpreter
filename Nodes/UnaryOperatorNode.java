@@ -42,7 +42,7 @@ public abstract class UnaryOperatorNode implements MerpNode {
 
     @Override
     public String toInfixString() {
-        return(operator+" "+child.toInfixString());
+        return("("+operator+" "+child.toInfixString()+")");
     }
 
     @Override
@@ -66,6 +66,10 @@ public abstract class UnaryOperatorNode implements MerpNode {
     @Override
     public boolean isOperation() {
         return true;
+    }
+
+    public String getOperator(){
+        return this.operator;
     }
 
     @Override
