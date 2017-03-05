@@ -1,6 +1,6 @@
 package Processors;
 
-import Nodes.MerpNode;
+
 import Util.SymbolTable;
 
 import java.awt.*;
@@ -36,6 +36,7 @@ public class EquationProcessor {
     private void processEquation(java.lang.String eq) {
         String trimmer = eq.trim();
         String[] fields = trimmer.split(" ");
+
         if (trimmer.startsWith("printV")) {
             symbolTable.dump();
         }
@@ -44,11 +45,8 @@ public class EquationProcessor {
             String sub=trimmer.substring(6,trimmer.length()-1);
             String trimmer1=sub.trim();
             String[] fields1=trimmer1.split(" ");
-
-
             for (int i = 0; i < fields1.length ; i++) {
                 tokens.add(fields1[i]);
-
             }
             processor.constructTree(tokens);
             int ans = processor.evaluateTree(symbolTable);
@@ -63,11 +61,13 @@ public class EquationProcessor {
             }
             processor.constructTree(tokens);
             int ans = processor.evaluateTree(symbolTable);
+
+
             symbolTable.put(fields[0], ans);
 
         }
 
-        else if (eq.startsWith("if")) {
+        else if (trimmer.startsWith("if")) {
             ArrayList<String> tokens = new ArrayList<>();
 
             String sub=trimmer.substring(3,trimmer.length()-1);
@@ -88,10 +88,36 @@ public class EquationProcessor {
                 processEquation(fields2[2]);
             }
 
+        }
 
-
+        else if(trimmer.startsWith("while")){
+            ArrayList<String> tokens1=new ArrayList<>();
+            String sub=trimmer.substring(6,trimmer.length()-1);
+            String[] fields2=sub.split(",");
+            String condition=fields2[0].trim();
+            String[] listc=condition.split(" ");
+            for (String i:listc){
+                tokens1.add(i);
+            }
+            ArrayList<String> tokens2=tokens1;
+            processor.constructTree(tokens1);
+            int ans=processor.evaluateTree(symbolTable);
+            String[] run=fields2[1].split(";");
+            while (ans==1){
+                for (String j:run){
+                    processEquation(j);
+                }
+                for (String i:listc){
+                    tokens1.add(i);
+                }
+                processor.constructTree(tokens2);
+                int ans2=processor.evaluateTree(symbolTable);
+                ans=ans2;
+            }
 
         }
+
+
         else{
             ArrayList<String> tokens = new ArrayList<>();
             for (String i:fields){
