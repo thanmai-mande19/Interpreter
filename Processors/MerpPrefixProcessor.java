@@ -16,7 +16,7 @@ public class MerpPrefixProcessor extends MerpProcessor {
 
     @Override
     public void constructTree(ArrayList<String> tokens) {
-        int[] i={0};
+
         this.tree=constructTreeHelper(tokens);
         if (tree!=null){
             int x=1;

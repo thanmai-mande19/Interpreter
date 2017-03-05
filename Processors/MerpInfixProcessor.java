@@ -80,11 +80,8 @@ public class MerpInfixProcessor extends MerpProcessor {
                             }
 
 
-
-
-
                         else if(top.getPrecedence()<=ele.getPrecedence() && ele!=null){
-                            if (!stack.isEmpty()){
+
 
                             if (top instanceof BinaryOperatorNode){
                                 BinaryOperatorNode higer1=(BinaryOperatorNode) top;
@@ -109,7 +106,7 @@ public class MerpInfixProcessor extends MerpProcessor {
                                 }
                             }
 
-                            }
+
                             for (MerpNode m:helper){
                                 stack.push(m);
                             }
@@ -169,25 +166,28 @@ public class MerpInfixProcessor extends MerpProcessor {
             }
 
         }
-        System.out.println(infix);
+        //System.out.println(infix);
         MerpPostfixProcessor post=new MerpPostfixProcessor();
-        this.tree=post.constructTreeHelper(infix);
-        String v1=tree.toInfixString();
-        System.out.println(v1);
-        SymbolTable s1=new SymbolTable();
-        int t1=tree.evaluate(s1);
-        System.out.println(t1);
+        //this.tree=post.constructTreeHelper(infix);
+        post.constructTree(infix);
+        this.tree=post.getTree();
+
+
         return tree;
     }
 
 
     public static void main(String[] args) {
         ArrayList<String> x = new ArrayList<>();
+        x.add("(");
+        x.add("1");
+        x.add("-");
+        x.add("5");
+        x.add(")");
+        x.add("^");
+        x.add("2");
+        x.add("^");
         x.add("3");
-        x.add("+");
-        x.add("4");
-        //x.add("*");
-        //x.add("2");
         //x.add("//");
         //x.add("(");
         //x.add("1");
@@ -197,7 +197,7 @@ public class MerpInfixProcessor extends MerpProcessor {
         //x.add("^");
         //x.add("2");
         //x.add("^");
-        //x.add("3");
+        //x.add("3"
         MerpInfixProcessor p1 = new MerpInfixProcessor();
         System.out.println(x);
         p1.constructTree(x);

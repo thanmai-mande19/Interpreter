@@ -19,7 +19,7 @@ public class MerpPostfixProcessor extends MerpProcessor {
 
 
     }
-    public MerpNode constructTreeHelper(ArrayList<String> tokens) {
+    private MerpNode constructTreeHelper(ArrayList<String> tokens) {
 
         if (!tokens.isEmpty()) {
             String token = tokens.remove(tokens.size() - 1);
