@@ -8,11 +8,17 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * Created by shrikanth on 27-02-2017.
+ * @author Venkata Thanmai Mande
+ * Description: Class to process Merp expressions using infix notation
+ *  Filename:  MerpInfixProcessor.java
  */
 public class MerpInfixProcessor extends MerpProcessor {
-    @Override
 
+    /**
+     * Constructs and assigns a Merp tree from the provided list of MerpNode tokens using infix notation
+     * @param tokens list of IerpNodes used to create the pares tree
+     */
+    @Override
     public void constructTree(ArrayList<String> tokens) {
         ArrayList<String> queue=new ArrayList<>();
         Stack<MerpNode> stack=new Stack<>();
@@ -145,7 +151,14 @@ public class MerpInfixProcessor extends MerpProcessor {
 
     }
 
+    /**
+     * Processes an stack of IerpNodes to create a Ierp Parse Tree
+     * @param stack Processes an stack of IerpNodes to create a Ierp Parse Tree
+     * @return the root of the parse tree
+     */
+
     private MerpNode processStack(java.util.Stack<MerpNode> stack){
+
         ArrayList<String> infix=new ArrayList<>();
         for (MerpNode mn:stack){
             if (mn instanceof ConstantNode){
@@ -166,9 +179,8 @@ public class MerpInfixProcessor extends MerpProcessor {
             }
 
         }
-        //System.out.println(infix);
+
         MerpPostfixProcessor post=new MerpPostfixProcessor();
-        //this.tree=post.constructTreeHelper(infix);
         post.constructTree(infix);
         this.tree=post.getTree();
 
@@ -177,37 +189,5 @@ public class MerpInfixProcessor extends MerpProcessor {
     }
 
 
-    public static void main(String[] args) {
-        ArrayList<String> x = new ArrayList<>();
-        x.add("(");
-        x.add("1");
-        x.add("-");
-        x.add("5");
-        x.add(")");
-        x.add("^");
-        x.add("2");
-        x.add("^");
-        x.add("3");
-        //x.add("//");
-        //x.add("(");
-        //x.add("1");
-        //x.add("-");
-        //x.add("5");
-        //x.add(")");
-        //x.add("^");
-        //x.add("2");
-        //x.add("^");
-        //x.add("3"
-        MerpInfixProcessor p1 = new MerpInfixProcessor();
-        System.out.println(x);
-        p1.constructTree(x);
-        //SymbolTable s1 = new SymbolTable();
-        //MerpNode t = p1.getTree();
-        //String y = t.toPrefixString();
-        //System.out.println(y);
-        //int v = t.evaluate(s1);
-        //System.out.println(v);
 
-
-    }
 }

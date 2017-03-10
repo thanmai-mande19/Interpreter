@@ -10,15 +10,27 @@ import Nodes.BinaryOperatorNode;
 import Util.SymbolTable;
 
 /**
- * Created by shrikanth on 27-02-2017.
+ * @author Venkata Thanmai Mande
+ * Description: Class to process Merp expressions using postfix notation
+ * Filename: MerpPostfixProcessor.java
  */
 public class MerpPostfixProcessor extends MerpProcessor {
+    /**
+     * Constructs and assigns a Merp tree from the provided list of MerpNode tokens using postfix notation
+     * @param tokens list of IerpNodes used to create the pares tree
+     */
     @Override
     public void constructTree(ArrayList<String> tokens) {
         this.tree=constructTreeHelper(tokens);
 
 
     }
+
+    /**
+     * Helper to recursively contstruct the parse tree
+     * @param tokens list of IerpNodes to process
+     * @return root of the tree
+     */
     private MerpNode constructTreeHelper(ArrayList<String> tokens) {
 
         if (!tokens.isEmpty()) {
@@ -48,26 +60,6 @@ public class MerpPostfixProcessor extends MerpProcessor {
 
     }
 
-
-    public static void main(String[] args){
-        ArrayList<String> x=new ArrayList<>();
-        x.add("3");
-        x.add("2");
-        x.add("*");
-        x.add("1");
-        x.add("+");
-        //x.add("4");
-        //x.add("2");
-        MerpPostfixProcessor p1=new MerpPostfixProcessor();
-        System.out.println(x);
-        p1.constructTree(x);
-        SymbolTable s1=new SymbolTable();
-        MerpNode t=p1.getTree();
-        String y=t.toPostfixString();
-        System.out.println(y);
-        int v=t.evaluate(s1);
-        System.out.println(v);
-    }
 
 }
 

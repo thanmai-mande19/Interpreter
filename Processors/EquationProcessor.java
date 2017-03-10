@@ -7,7 +7,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Created by shrikanth on 27-02-2017.
+ * @author Venkata Thanmai Mande
+ * Description:Class to process Merp Programming Language Statements
+ * Filename:  EquationProcessor.java
  */
 public class EquationProcessor {
 
@@ -16,8 +18,11 @@ public class EquationProcessor {
     java.util.ArrayList<java.lang.String> equations;
 
 
-
-
+    /**
+     * Constructor to create an Equation Processor. Creates an empty SymbolTable.
+     * @param equations ArrayList containing the equations
+     * @param processor the Merp processor to use to process expressions
+     */
     public EquationProcessor(java.util.ArrayList<java.lang.String> equations,
                              MerpProcessor processor){
         this.processor=processor;
@@ -26,12 +31,20 @@ public class EquationProcessor {
 
     }
 
+    /**
+     * Processes the provided list of statements using the provided Merp Processor and Sysmbol Table.
+     */
     public void processEquations(){
         for (String eq:equations){
             processEquation(eq);
         }
 
     }
+
+    /**
+     * Helper method of processEquations
+     * @param eq the string to be processed.
+     */
 
     private void processEquation(java.lang.String eq) {
         String trimmer = eq.trim();
@@ -130,11 +143,5 @@ public class EquationProcessor {
     }
 
 
-    public static void main(String[] args){
-        MerpProcessor a=new MerpPrefixProcessor();
-        ArrayList<String> c=new ArrayList<>();
-        c.add("print( > 5 2 )");
-        EquationProcessor b=new EquationProcessor(c,a);
-        b.processEquations();
-    }
+
 }

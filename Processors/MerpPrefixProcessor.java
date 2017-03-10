@@ -6,7 +6,9 @@ import Util.SymbolTable;
 import java.util.ArrayList;
 
 /**
- * Created by shrikanth on 27-02-2017.
+ * @author Venkata Thanmai Mande
+ * Description: Class to process Merp expressions using postfix notation
+ * Filename:  MerpPostfixProcessor.java
  */
 public class MerpPrefixProcessor extends MerpProcessor {
 
@@ -14,6 +16,10 @@ public class MerpPrefixProcessor extends MerpProcessor {
 
     }
 
+    /**
+     * Constructs and assigns a Merp tree from the provided list of MerpNode tokens using postfix notation
+     * @param tokens list of IerpNodes used to create the pares tree
+     */
     @Override
     public void constructTree(ArrayList<String> tokens) {
 
@@ -23,9 +29,14 @@ public class MerpPrefixProcessor extends MerpProcessor {
             int y=3;
         }
 
-
-
     }
+
+
+    /**
+     * Helper to recursively contstruct the parse tree
+     * @param tokens list of IerpNodes to process
+     * @return root of the node
+     */
 
     private MerpNode constructTreeHelper(java.util.ArrayList<java.lang.String> tokens){
         if (tokens.isEmpty()){
@@ -117,23 +128,5 @@ public class MerpPrefixProcessor extends MerpProcessor {
 
     }
 
-    public static void main(String[] args){
-        ArrayList<String> x=new ArrayList<>();
-        x.add("*");
-        x.add("1");
-        x.add("+");
-        x.add("2");
-        x.add("//");
-        x.add("4");
-        x.add("2");
-        MerpPrefixProcessor p1=new MerpPrefixProcessor();
-        System.out.println(x);
-        p1.constructTree(x);
-        SymbolTable s1=new SymbolTable();
-        MerpNode t=p1.getTree();
-        String y=t.toPrefixString();
-        System.out.println(y);
-        int v=t.evaluate(s1);
-        System.out.println(v);
-    }
+
 }
