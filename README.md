@@ -7,14 +7,19 @@ This is a multi line user input and the multi user input will terminate when inp
 
 Examples :
 
-1. 5 + 3
+1)  5 + 3
 
-2. x = 5
-   x + 5
+2)  x = 5
+    x + 5
 
-3. x = 5
-   y = 6
-   x * y
-   
+3)  x = 5
+    y = 6
+    x * y
+
+4) + 4 5
+
+5) x = 8
+   y = 10
+   x y *
  
    
